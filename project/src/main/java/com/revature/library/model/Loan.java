@@ -3,9 +3,6 @@ package com.revature.library.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
-/**
- * Loan Entity - TODO: Complete the relationship annotations
- */
 @Entity
 @Table(name = "loans")
 public class Loan {
@@ -14,14 +11,12 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: Add ManyToOne relationship to Book
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "book_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
-    // TODO: Add ManyToOne relationship to Patron
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "patron_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "patron_id", nullable = false)
     private Patron patron;
 
     private LocalDate loanDate;
@@ -39,7 +34,6 @@ public class Loan {
         this.patron = patron;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
